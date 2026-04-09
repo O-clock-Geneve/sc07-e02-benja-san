@@ -1,0 +1,17 @@
+:root {
+  --sidebar-size: 300px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  .mainContent {
+    width: calc(100% - var(--sidebar-size));
+    .page {
+      width: 100%;
+      padding: 0 2rem;
+    }
+  }
+}

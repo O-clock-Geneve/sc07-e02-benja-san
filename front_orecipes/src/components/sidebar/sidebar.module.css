@@ -1,0 +1,10 @@
+.aside {
+  width: 300px;
+  background-color: #042031;
+  color: white;
+  padding: 2rem;
+  height: 100dvh;
+  nav ul li:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+}

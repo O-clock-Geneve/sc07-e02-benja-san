@@ -1,0 +1,61 @@
+:root {
+  --flex-gap: 2rem;
+}
+
+.recipeCard {
+  border-radius: 16px;
+  border: 1px solid rgba(128, 128, 128, 0.525);
+  width: calc(50% - var(--flex-gap));
+  max-width: 300px;
+  min-width: 200px;
+  overflow: hidden;
+  article {
+    .pictureContainer {
+      height: 18vh;
+      max-height: 200px;
+      min-height: 150px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          width 0.5s,
+          height 0.5s;
+      }
+    }
+    .contentContainer {
+      width: 100%;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      h3 {
+        font-weight: 800;
+        font-size: 20px;
+        margin-bottom: 2px;
+      }
+      p {
+        color: rgba(128, 128, 128, 0.503);
+        font-size: 12px;
+        font-weight: 200;
+        margin-bottom: 8px;
+      }
+      a {
+        width: 100%;
+        text-align: center;
+        background-color: #209cee;
+        color: white;
+        display: block;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+      }
+    }
+  }
+  &:hover {
+    article .pictureContainer img {
+      width: 110%;
+      height: 110%;
+    }
+  }
+}
