@@ -57,28 +57,32 @@ export default function FavoritesContexteProvider({
             setErrorMessage(
               "Veuillez vous connecter afin d'acceder à vos recettes preferées",
             )
-            throw new Error("Erreur lors de la récupération de vos favoris")
+            setFavoriteRecipes([])
           } else if (response.status < 300) {
             // Si la reponse est une 200
             // Je transforme ma réponse en json
             const fetchedFavorites = await response.json()
             // Je récupère mes recettes favorites
             setFavoriteRecipes(fetchedFavorites.favorites)
+            // Je vide le message d'erreur
+            setErrorMessage("")
           } else {
             //Pour toute autre erreur je display une erreur générale
             setErrorMessage(errortoDisplay)
-            throw new Error("Erreur lors de la récupération de vos favoris")
+            setFavoriteRecipes([])
           }
         } catch (e) {
           if (e instanceof Error) {
             console.log("error caught : ", e.message)
-            throw new Error("Erreur lors de la récupération de vos favoris")
+            setErrorMessage(errortoDisplay)
+            setFavoriteRecipes([])
           }
         }
       } else {
         // Sinon je déconnecte l'utilisateur
         //Et je lui affiche un message l'invitant à log à nouveau
         setErrorMessage("Veuillez vous reconnecter")
+        setFavoriteRecipes([])
         localStorage.clear()
       }
     }

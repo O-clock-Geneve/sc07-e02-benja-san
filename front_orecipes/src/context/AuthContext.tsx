@@ -5,9 +5,9 @@ import type { User } from "../@types/recipe"
 interface IAuthContext {
   user: User | undefined
   error: string | null
-  login: (email: string | null, password: string | null) => Promise<void>
+  login: (email: string, password: string) => Promise<void>
   logout: () => void
-  setUser: (user: User | undefined) => void
+  setUser: React.Dispatch<React.SetStateAction<User | undefined>>
 }
 
 interface AuthProviderProps {
