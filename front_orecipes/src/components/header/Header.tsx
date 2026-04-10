@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { useAuth } from "../../context/AuthContext"
 
 export default function Header() {
-  const { user, login, setUser } = useAuth()
+  const { user, login, setUser, logout } = useAuth()
 
   async function handleAction(formData: FormData) {
     const email = formData.get("email") as string
@@ -35,7 +35,12 @@ export default function Header() {
         <img src="logo.png" alt="Accès Accueil Orecipes" />
       </Link>
       {user && user.logged ? (
-        <p>Welcome {user.pseudo}</p>
+        <>
+          <p>Welcome {user.pseudo}</p>
+          <button type="button" onClick={logout}>
+            Logout
+          </button>
+        </>
       ) : (
         <form action={handleAction}>
           <input type="email" placeholder="Adresse Email" name="email" />

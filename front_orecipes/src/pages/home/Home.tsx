@@ -1,16 +1,16 @@
 import type { IRecipe } from "../../@types/recipe"
 import styles from "./home.module.css"
 import RecipeCard from "../../components/recipeCard/RecipeCard"
+import { useRecipes } from "../../context/RecipesContext"
 
-interface HomeProps {
-  recipes: IRecipe[]
-}
-
-export default function Home({ recipes }: HomeProps) {
+export default function Home() {
+  const { recipes, isLoading } = useRecipes()
   return (
     <section className={styles.home}>
       <h1>Les recettes oRecipes</h1>
-      {recipes.length > 0 ? (
+      {isLoading ? (
+        <p>Loading....</p>
+      ) : recipes.length > 0 ? (
         <>
           <h2>Voici nos {recipes.length} recettes</h2>
           <ul>

@@ -1,12 +1,9 @@
 import { NavLink } from "react-router"
 import styles from "./sidebar.module.css"
-import type { IRecipeLink } from "../../@types/recipe"
+import { useRecipes } from "../../context/RecipesContext"
 
-interface sidebarProps {
-  recipeLinks: IRecipeLink[]
-}
-
-export default function Sidebar({ recipeLinks }: sidebarProps) {
+export default function Sidebar() {
+  const { recipeLinks } = useRecipes()
   return (
     <aside className={styles.aside}>
       <nav>
